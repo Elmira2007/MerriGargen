@@ -1,0 +1,79 @@
+{% extends "include/homepage.html" %}
+{% load static %}
+{% block content %}
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader"> <span></span> </div>
+        </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Navbar -->
+    {% include "include/header.html" %}
+    <!-- Header Banner -->
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="{% static 'img/merrigarden/banner/1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 caption mt-90">
+                    <h5>{{settings.title}}</h5>
+                    <h1>Команда</h1>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <!-- Team -->
+    <section class="team section-padding bg-cream">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle"><span>{{setting.title}}</span></div>
+                    <div class="section-title">Команда</div>
+                </div>
+            </div>
+            <div class="row">
+                {% for team in team%}
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="img"> <img src="{{team.image.url}}" alt="Merri Garden"> </div>
+                        <div class="info">
+                            <h6>{{team.name}}</h6>
+                            <p>{{team.descriptions}}</p>
+                            <div class="social valign">
+                                <div class="full-width"> 
+                                    {% if team.instagram%}
+                                   <a href="{{team.instagram}}"><i class="ti-instagram"></i></a> 
+                                   {% endif %}
+                                   {% if team.whatsapp%}
+                                   <a href="{{team.whatsapp}}"><i class="ti-whatsapp"></i></a> 
+                                   {% endif %}
+                                   {% if team.facebook%}
+                                   <a href="{{team.facebook}}"><i class="ti-facebook"></i></a> 
+                                   {% endif %}
+                                   {% if team.youtube%}
+                                   <a href="{{team.youtube}}"><i class="ti-youtube"></i></a>
+                                   {% endif %}
+                                   <p>{{team.email}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation & Booking Form -->
+    {% include "include/form.html" %}
+    <!-- Footer -->
+    {% include "include/footer.html" %}
+    <!-- jQuery -->
+{% endblock %}
+</html>
